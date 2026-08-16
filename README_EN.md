@@ -25,9 +25,9 @@ Source is open. Take it, mod it, do whatever you want with it.
 ## Features
 
 - **ESP**: monsters/grabbables show Chinese name + distance (red for monsters, yellow for items). Works for host and client.
-- **God mode + infinite stamina**: refills every frame (real invincibility as host, only protects against normal attacks as client).
-- **One-click collect**: suck all grabbables into your bag as host; client fakes grab requests to collect from anywhere.
-- **One-click vacuum**: pull physical items to your feet, with a configurable cap and mission-item priority (host/client).
+- **God mode + infinite stamina**: refills every frame (host only).
+- **One-click collect**: suck all grabbables into your bag (host only).
+- **One-click vacuum**: pull physical items to your feet, with a configurable cap and mission-item priority (host only).
 - **Noclip / fly**: disable collision and move directly (host only).
 - **Freeze monsters**: skip monster AI frames, keeps them in place (host only).
 - **No alert / phase lock**: zeroes the alert gauge every frame, monsters stay at the starting phase (host only).
@@ -38,8 +38,6 @@ Source is open. Take it, mod it, do whatever you want with it.
 
 Honest answer: I can't test every feature on every machine in every match. There are bugs, for sure. Ones I know of:
 
-- **Client collect/vacuum** are faked requests — whether they work depends on the host's validation, no guarantees.
-- **God mode (client)** only blocks normal attacks; execution attacks from captures still get you.
 - **Fly/noclip** interact with the physics system; you may occasionally get bounced back when passing through terrain.
 
 Anything else — let me know when you hit it. You can ping me in the group below.

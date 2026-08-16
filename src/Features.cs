@@ -10,14 +10,14 @@ namespace QUIETCheat
         public static bool MenuOpen = true;
 
         // ---- 功能开关（范围见菜单文案）----
-        public static bool God = false;            // 无敌锁血 + 无限体力
+        public static bool God = false;            // 无敌锁血 + 无限体力（房主）
         public static bool Noclip = false;         // 穿墙/飞行（房主）
         public static bool FreezeMonsters = false; // 怪物定身（房主）
         public static bool NoAlert = false;        // 无警报锁阶段（房主）
-        public static bool Collect = false;        // 一键收集
-        public static bool Suck = false;           // 一键吸取
+        public static bool Collect = false;        // 一键收集（房主）
+        public static bool Suck = false;           // 一键吸取（房主）
         public static int SuckMax = 100;           // 吸取上限（吸满自动停，防卡）
-        public static bool Esp = true;             // ESP 透视
+        public static bool Esp = true;             // ESP 透视（双方）
 
         // ---- 角色检测（房主 / 客户端）----
         private enum Role { None, Host, Client }

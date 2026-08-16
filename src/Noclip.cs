@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace QUIETCheat
 {
-    /// <summary>穿墙 / 飞行（仅房主）。关碰撞 + 停游戏移动，直接改 transform；客端移动是房主算的，改不了。</summary>
+    /// <summary>穿墙 / 飞行（仅房主）：关碰撞 + 停游戏移动，直接改 transform。</summary>
     public static class Noclip
     {
         private static bool _wasActive;

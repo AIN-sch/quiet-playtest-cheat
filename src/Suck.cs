@@ -3,11 +3,10 @@ using UnityEngine;
 
 namespace QUIETCheat
 {
-    /// <summary>一键吸取：实体物品吸到脚下（上限 SuckMax，任务优先）。房主直移同步；客端伪造吸收/抓取请求。</summary>
+    /// <summary>一键吸取（仅房主）：实体物品吸到脚下（上限 SuckMax，任务优先）。</summary>
     public static class Suck
     {
         private static float _nextPull;
-        private static float _nextSend;
         private static float _nextNotify;
         private static int _pulled;         // 本次开启累计已吸数量（按物品去重）
         private static readonly HashSet<ulong> _pulledIds = new HashSet<ulong>();  // 已吸物品网络ID，防重复计数
@@ -16,7 +15,7 @@ namespace QUIETCheat
 
         public static void Update()
         {
-            bool active = Features.Suck;
+            bool active = Features.Suck && Features.IsHost;
             if (active && !_wasActive)      // 重新开启，重置计数
             {
                 _pulled = 0;
@@ -47,8 +46,7 @@ namespace QUIETCheat
                 return;
             }
 
-            if (Features.IsHost) HostPull(local);
-            else ClientRequest(local);
+            HostPull(local);
         }
 
         /// <summary>可吸物品：网络同步 + 刚体，排除玩家/怪物/操作类交互物。</summary>
@@ -107,43 +105,6 @@ namespace QUIETCheat
                         var rb = sync.GetComponent<Rigidbody>();
                         if (rb != null && !rb.isKinematic) { rb.velocity = Vector3.zero; rb.angularVelocity = Vector3.zero; }
 
-                        _pulled++; batch++;
-                    }
-                    catch { /* 单件异常，跳过 */ }
-                }
-            }
-            NotifyProgress(batch);
-        }
-
-        /// <summary>客端：伪造吸收/抓取请求，隔空吸。</summary>
-        private static void ClientRequest(ActorEntity local)
-        {
-            if (Time.time < _nextSend) return;
-            _nextSend = Time.time + 0.3f;
-
-            var nm = NetManager.Instance;
-            if (nm == null || nm.API == null) return;
-            byte myIndex = local.PlayerInfo.PlayerIndex;
-
-            int batchCap = Mathf.Min(12, Features.SuckMax - _pulled);
-            int batch = 0;
-            for (int pass = 0; pass < 2 && batch < batchCap; pass++)   // 先任务目标再其余
-            {
-                foreach (var sync in Object.FindObjectsByType<NetworkSyncObject>(FindObjectsSortMode.None))
-                {
-                    if (!IsItem(sync) || !sync.HasId) continue;
-                    if (batch >= batchCap) break;
-                    try
-                    {
-                        var st = sync.Stealable;
-                        bool isMission = st != null && Features.IsMissionTarget(st._type);
-                        if (pass == 0 && !isMission) continue;
-                        if (pass == 1 && isMission) continue;
-
-                        if (!_pulledIds.Add(sync.ObjectId)) continue;   // 同一件不重复发/计数
-
-                        nm.API.SendObjectAbsorbing(myIndex, sync.ObjectId);   // 游戏自带的"吸收"请求
-                        nm.API.SendExecuteGrabbedObject(myIndex, sync.ObjectId, 0.05f, Vector3.zero);
                         _pulled++; batch++;
                     }
                     catch { /* 单件异常，跳过 */ }

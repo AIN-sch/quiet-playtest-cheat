@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace QUIETCheat
 {
-    /// <summary>怪物定身（仅房主）。跳过怪物 AI 帧，原地定住；客端没有控制通道。</summary>
+    /// <summary>怪物定身（仅房主）：跳过怪物 AI 帧，原地定住。</summary>
     public static class Freeze
     {
         public static void Update()

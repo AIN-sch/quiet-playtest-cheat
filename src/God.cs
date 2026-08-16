@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace QUIETCheat
 {
-    /// <summary>无敌锁血 + 无限体力：每帧血量/体力写满（房主真无敌，客端防普通攻击）。</summary>
+    /// <summary>无敌锁血 + 无限体力（仅房主）：每帧血量/体力写满。</summary>
     public static class God
     {
         public static void Update()
