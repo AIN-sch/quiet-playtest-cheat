@@ -50,7 +50,7 @@ It's a small game. Not worth a lot of effort. **Whether a bug gets fixed is pure
 
 ## Modding / Forks
 
-Source lives in `src/`. Open **`QUIETCheat.csproj`** directly in Visual Studio and go to town.
+Source lives in `src/`. Open **`QUIETCheat.sln`** directly in Visual Studio and go to town.
 Building requires the game installed (the csproj references assemblies in `BepInEx\interop\`, which exist after BepInEx has run the game once); run `dotnet build -c Release`.
 
 Use it however you like, distribute it however you like.

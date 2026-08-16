@@ -54,7 +54,7 @@ BepInEx 6（IL2CPP）插件。把编译出的 `QUIETCheat.dll` 扔进
 
 ## 二创
 
-源码在 `src/`，Visual Studio 直接打开 **`QUIETCheat.csproj`** 就能改。
+源码在 `src/`，Visual Studio 直接打开 **`QUIETCheat.sln`** 就能改。
 构建需要装好游戏（csproj 引用了 `BepInEx\interop` 下的游戏程序集，BepInEx 跑过一次游戏后才有），
 跑 `dotnet build -c Release` 即可。
 
