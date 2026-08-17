@@ -36,15 +36,13 @@ Source is open. Take it, mod it, do whatever you want with it.
 
 ## Known Bugs
 
-Honest answer: I can't test every feature on every machine in every match. There are bugs, for sure. Ones I know of:
-
-- **Fly/noclip** interact with the physics system; you may occasionally get bounced back when passing through terrain.
-
-Anything else — let me know when you hit it. You can ping me in the group below.
+- **ESP is buggy.** Yes, I've seen it. I just don't want to fix it — small game, not worth it.
+- There may be other bugs here and there. Also not fixing those.
 
 ## My Attitude
 
-It's a small game. Not worth a lot of effort. **Whether a bug gets fixed is purely down to whether I feel like playing**: if it annoys me enough, I'll fix it; otherwise I'll leave it. If it works, it works. Don't expect support.
+Small game, not worth much effort. I'm lazy.
+Use it if it works; if not, fork it and fix it yourself.
 
 ## Modding / Forks
 
